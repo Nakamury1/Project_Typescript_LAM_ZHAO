@@ -1,10 +1,11 @@
-import express from 'express'
-import { getTaches, createTache, deleteTache } from '../controllers/TacheController.js'
+import express from 'express';
+import { TacheController } from '../controllers/TacheController.js';
 
-const router = express.Router()
+const router = express.Router();
+const tacheController = new TacheController(0, '', '', new Date(), 'Nom commencée', 0);
 
-router.get('/', getTaches)
-router.post('/:id', createTache)
-router.delete('/', deleteTache)  
+router.get('/', tacheController.getTaches);
+router.post('/:id', tacheController.createTache);
+router.delete('/', tacheController.deleteTache);
 
-export default router
+export default router;

@@ -1,23 +1,29 @@
-import * as bcrypt from 'bcrypt-ts';
-import { PrismaClient } from '@prisma/client';
-import jwt from 'jsonwebtoken';
+import * as bcrypt from "bcrypt-ts";
+import { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
+import * as dotenv from "dotenv";
+import { Request, Response } from 'express';
 
-import { UserInterface } from '../interfaces/User';
+import { UserInterface } from "../interfaces/User";
 
+dotenv.config();
 const prisma = new PrismaClient();
 
-export class UserController implements UserInterface{
+const jwtSecret = process.env.JWT_SECRET as string;
+
+export class UserController implements UserInterface {
     id: number;
     email: string;
     password: string;
-    
+
     constructor(id: number, email: string, password: string) {
         this.id = id;
         this.email = email;
         this.password = password;
     }
 
-    signIn = async(email: string, password: string) => {
+    public signIn = async (req: Request, res: Response) => {
+        const { email, password } = req.body;
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
             const user = await prisma.user.create({
@@ -26,69 +32,66 @@ export class UserController implements UserInterface{
                     password: hashedPassword,
                 },
             });
-    
-            if (!process.env.JWT_SECRET) {
-                throw new Error('JWT_SECRET non configuré');
+
+            if (!jwtSecret) {
+                return res.status(500).json({ error: "Invalid token" });
             }
-    
+
             const token = jwt.sign(
                 {
                     id: user.id,
                     email: user.email,
-                    
                 },
-                process.env.JWT_SECRET,
+                jwtSecret,
                 {
-                    expiresIn: '8000h',
+                    expiresIn: "8000h",
                 }
             );
-    
-            return token;
-        } 
-        catch(error){
-            console.error("Echec d'inscription", error);
-            throw new Error;
+
+            return res.status(200).json({ user, token });
+        } catch (error) {
+            console.error("Sign in failed", error);
+            return res.status(500).json({ error: "Sign in failed" });
         }
     };
-    
-    logIn = async(email: string, password: string ) => {
+
+    public logIn = async (req: Request, res: Response) => {
+        const { email, password } = req.body;
         try {
             const user = await prisma.user.findUnique({
                 where: {
                     email,
                 },
             });
-    
+
             if (!user) {
-                return {success: false, error: 'Utilisateur introuvable'};
+                return res.status(404).json({ error: "User not found" });
             }
-    
-            if (!process.env.JWT_SECRET) {
-                throw new Error('JWT_SECRET non configuré');
+
+            if (!jwtSecret) {
+                return res.status(500).json({ error: "Invalid token" });
             }
-    
+
             const validPassword = await bcrypt.compare(password, user.password);
             if (!validPassword) {
-               console.error('Mot de passe invalide');
-               throw new Error;
+                return res.status(401).json({ error: "Invalid password" });
             }
-    
+
             const token = jwt.sign(
                 {
                     id: user.id,
                     email: user.email,
                 },
-                process.env.JWT_SECRET,
+                jwtSecret,
                 {
-                    expiresIn: '8000h',
+                    expiresIn: "8000h",
                 }
             );
-    
-            return token;
-        }
-        catch(error){
-            console.error("Echec de connexion", error);
-            throw new Error;
+
+            return res.status(200).json({ token });
+        } catch (error) {
+            console.error("Login failed", error);
+            return res.status(500).json({ error: "Login failed" });
         }
     };
 }

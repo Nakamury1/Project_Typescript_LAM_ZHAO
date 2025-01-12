@@ -1,10 +1,14 @@
-import * as bcrypt from 'bcrypt-ts';
-import { PrismaClient } from '@prisma/client';
-import jwt from 'jsonwebtoken';
+import * as bcrypt from "bcrypt-ts";
+import { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
+import * as dotenv from "dotenv";
+dotenv.config();
 const prisma = new PrismaClient();
+const jwtSecret = process.env.JWT_SECRET;
 export class UserController {
     constructor(id, email, password) {
-        this.signIn = async (email, password) => {
+        this.signIn = async (req, res) => {
+            const { email, password } = req.body;
             try {
                 const hashedPassword = await bcrypt.hash(password, 10);
                 const user = await prisma.user.create({
@@ -13,23 +17,24 @@ export class UserController {
                         password: hashedPassword,
                     },
                 });
-                if (!process.env.JWT_SECRET) {
-                    throw new Error('JWT_SECRET non configuré');
+                if (!jwtSecret) {
+                    return res.status(500).json({ error: "Invalid token" });
                 }
                 const token = jwt.sign({
                     id: user.id,
                     email: user.email,
-                }, process.env.JWT_SECRET, {
-                    expiresIn: '8000h',
+                }, jwtSecret, {
+                    expiresIn: "8000h",
                 });
-                return token;
+                return res.status(200).json({ user, token });
             }
             catch (error) {
-                console.error("Echec d'inscription", error);
-                throw new Error;
+                console.error("Sign in failed", error);
+                return res.status(500).json({ error: "Sign in failed" });
             }
         };
-        this.logIn = async (email, password) => {
+        this.logIn = async (req, res) => {
+            const { email, password } = req.body;
             try {
                 const user = await prisma.user.findUnique({
                     where: {
@@ -37,27 +42,26 @@ export class UserController {
                     },
                 });
                 if (!user) {
-                    return { success: false, error: 'Utilisateur introuvable' };
+                    return res.status(404).json({ error: "User not found" });
                 }
-                if (!process.env.JWT_SECRET) {
-                    throw new Error('JWT_SECRET non configuré');
+                if (!jwtSecret) {
+                    return res.status(500).json({ error: "Invalid token" });
                 }
                 const validPassword = await bcrypt.compare(password, user.password);
                 if (!validPassword) {
-                    console.error('Mot de passe invalide');
-                    throw new Error;
+                    return res.status(401).json({ error: "Invalid password" });
                 }
                 const token = jwt.sign({
                     id: user.id,
                     email: user.email,
-                }, process.env.JWT_SECRET, {
-                    expiresIn: '8000h',
+                }, jwtSecret, {
+                    expiresIn: "8000h",
                 });
-                return token;
+                return res.status(200).json({ token });
             }
             catch (error) {
-                console.error("Echec de connexion", error);
-                throw new Error;
+                console.error("Login failed", error);
+                return res.status(500).json({ error: "Login failed" });
             }
         };
         this.id = id;

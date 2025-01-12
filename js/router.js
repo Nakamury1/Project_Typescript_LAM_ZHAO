@@ -1,8 +1,10 @@
 import express from 'express';
-import { signIn, logIn } from './controllers/UserController.js';
-import { getTaches } from './controllers/TacheController.js';
+import { UserController } from './controllers/UserController.js';
+import { TacheController } from './controllers/TacheController.js';
 const router = express.Router();
-router.use('/signIn', signIn);
-router.use('/login', logIn);
-router.use('/tache', getTaches);
+const userController = new UserController(0, '', '');
+const tacheController = new TacheController(0, '', '', new Date(), 'Nom commencée', 0);
+router.post('/signIn', userController.signIn);
+router.post('/login', userController.logIn);
+router.get('/tache', tacheController.getTaches);
 export default router;
