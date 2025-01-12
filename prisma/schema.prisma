@@ -26,10 +26,16 @@ model Tache {
   id          Int      @id @default(autoincrement())
   titre       String
   description String
-  etat_tache  String
+  etat_tache  Status   @default(NON_COMMENCEE)
   deadline    DateTime
-  user        User?   @relation(fields:[user_Id], references: [id])
-  user_Id     Int?
+  user        User   @relation(fields:[user_Id], references: [id])
+  user_Id     Int
   createAt    DateTime @default(now())
   updateAt    DateTime @updatedAt
+}
+
+enum Status {
+  NON_COMMENCEE
+  EN_COURS
+  TERMINEE
 }

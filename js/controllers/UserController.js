@@ -14,7 +14,7 @@ export class UserController {
                     },
                 });
                 if (!process.env.JWT_SECRET) {
-                    console.error('Invalide token');
+                    throw new Error('JWT_SECRET non configuré');
                 }
                 const token = jwt.sign({
                     id: user.id,
@@ -22,7 +22,7 @@ export class UserController {
                 }, process.env.JWT_SECRET, {
                     expiresIn: '8000h',
                 });
-                return user;
+                return token;
             }
             catch (error) {
                 console.error("Echec d'inscription", error);
@@ -37,10 +37,10 @@ export class UserController {
                     },
                 });
                 if (!user) {
-                    console.error('Utilisateur introuvable');
+                    return { success: false, error: 'Utilisateur introuvable' };
                 }
                 if (!process.env.JWT_SECRET) {
-                    console.error('Invalide token');
+                    throw new Error('JWT_SECRET non configuré');
                 }
                 const validPassword = await bcrypt.compare(password, user.password);
                 if (!validPassword) {

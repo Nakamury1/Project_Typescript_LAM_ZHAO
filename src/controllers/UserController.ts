@@ -28,7 +28,7 @@ export class UserController implements UserInterface{
             });
     
             if (!process.env.JWT_SECRET) {
-                console.error('Invalide token');
+                throw new Error('JWT_SECRET non configuré');
             }
     
             const token = jwt.sign(
@@ -43,7 +43,7 @@ export class UserController implements UserInterface{
                 }
             );
     
-            return user;
+            return token;
         } 
         catch(error){
             console.error("Echec d'inscription", error);
@@ -60,11 +60,11 @@ export class UserController implements UserInterface{
             });
     
             if (!user) {
-                console.error('Utilisateur introuvable');
+                return {success: false, error: 'Utilisateur introuvable'};
             }
     
             if (!process.env.JWT_SECRET) {
-              console.error('Invalide token');
+                throw new Error('JWT_SECRET non configuré');
             }
     
             const validPassword = await bcrypt.compare(password, user.password);

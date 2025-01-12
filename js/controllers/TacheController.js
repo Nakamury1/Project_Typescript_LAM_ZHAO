@@ -1,8 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import { Status } from "../type/Status";
 const prisma = new PrismaClient();
 export class TacheController {
     constructor(id, titre, description, deadline, etat_tache, user_Id) {
-        this.etat_tache = Status;
+        this.etat_tache = Status.NON_COMMENCEE;
         this.getTaches = async (user_Id) => {
             try {
                 const taches = await prisma.tache.findMany({
@@ -24,7 +25,7 @@ export class TacheController {
                         titre,
                         description,
                         deadline,
-                        etat_tache,
+                        etat_tache: etat_tache,
                         user_Id
                     },
                 });

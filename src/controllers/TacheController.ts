@@ -10,8 +10,8 @@ export class TacheController implements TachesInterface{
   titre: string;
   description: string;
   deadline: Date;
+  etat_tache: Status = Status.NON_COMMENCEE;
   user_Id: number;
-  etat_tache = Status;
 
   constructor(id: number, titre: string, description: string, deadline: Date, etat_tache: Status, user_Id: number) {
       this.id = id;
@@ -44,7 +44,7 @@ export class TacheController implements TachesInterface{
           titre,
           description,
           deadline,
-          etat_tache,
+          etat_tache: etat_tache as Status,
           user_Id
         },
       });
