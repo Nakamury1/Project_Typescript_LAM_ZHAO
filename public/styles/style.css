@@ -9,24 +9,25 @@
 }
 
 body {
+    font-family: "roboto", sans-serif;
     background: linear-gradient(#b7324b, #a0213f, #891133);
+    background-repeat: no-repeat;
     color: #f5f9e9;
     height: 100vh;
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 65px;
 }
 
 h2 {
     font-size: 40px;
-    color: #891133;
 }
 
 /*----------------  Barre de navigation ---------------*/
 
 nav {
-    position: absolute;
+    position: relative;
     width: 100%;
     padding: 30px 0;
     display: flex;
@@ -60,7 +61,7 @@ ul li a:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
 }
 
 .text {
@@ -82,7 +83,7 @@ ul li a:hover {
 }
 
 .getstarted a {
-    color: black;
+    color: white;
 }
 
 .getstarted:hover {
@@ -99,88 +100,295 @@ ul li a:hover {
     height: 400px;
 }
 
-/*------------- Formulaire Connexion et Inscription -------------*/
+@media screen and (max-width: 768px) {
+    .accueil {
+        flex-direction: column;
+    }
 
-.CoIns {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    .text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .list img {
+        width: 10%;
+    }
 }
 
-.formulaire {
+/*------------- Formulaire Connexion et Inscription -------------*/
+
+.login_register {
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 95px 30px;
-    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.5s ease, height 0.2s ease;
+    margin: auto;
+    top: 150px;
+    transform: scale(1);
+} 
+
+.login_register.activeRegister {
+    transform: scale(0);
+}
+
+.login_register.active {
+    height: 520px;
+}
+
+.formBox {
+    width: 100%;
+    padding: 40px;
+}
+
+.formBox h2 {
+    font-size: 2em;
+    color: white;
     text-align: center;
 }
 
-.form_block {
-    background-color: #f5f9e9;
-    border-radius: 10px;
-    color: black;
-    padding: 30px;
+.inputBox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid white;
+    margin: 30px 0;
 }
 
-.form {
-    padding: 20px 0;
+.inputBox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.5s;
 }
 
-.bloc {
+.inputBox input:focus~label, .inputBox input:valid~label {
+    top: -5px;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: white;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.inputBox .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: white;
+    line-height: 57px;
+}
+
+.formBox.login {
+    transition: transform 0.18s ease;
+    transform: translateX(0);
+}
+
+.login_register.active .formBox.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.formBox.registration {
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+
+.login_register.active .formBox.registration {
+    transition: transform 0.18s ease;
+    transform: translateX(0);
+}
+
+.rememberForgot {
+    font-size: 0.9em;
+    color: white;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rememberForgot label input {
+    accent-color: black;
+    margin-right: 3px;
+}
+
+.rememberForgot a {
+    color: white;
+}
+
+.rememberForgot a:hover {
+    text-decoration: underline;
+}
+
+.loginRegister {
+    font-size: 0.9em;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.loginRegister p a {
+    color: white;
+    font-weight: 600;
+}
+
+.loginRegister p a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .login_register {
+        width: 90%;
+    }
+}
+
+/*------------------ Ajouter Une Tâche ------------------*/
+
+.addTask {
+    align-items: center;
+    padding: 150px 30px 25px;
+}
+
+.addTaskForm {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
 }
 
-label {
-    font-size: 14px;
-    display: block;
-    text-align: left;
+.addTaskForm label {
+    font-size: 1.2em;
+    color: white;
+    margin: 10px 0;
 }
 
-input {
-    padding: 5px;
-    margin: 15px;
-    border: none;
-    border-bottom: 3px solid black;
-    align-items: center;
-    font-size: 15px;
+.addTaskForm input {
+    width: 100%;
+    height: 40px;
     background: transparent;
+    border: 1.5px solid white;
+    color: white;
+    font-size: 1em;
+    padding: 0 10px;
+    margin: 5px 0 20px;
 }
 
-input::placeholder {
-    font-size: 15px;
-    color: black;
+.addTaskForm textarea {
+    width: 100%;
+    height: 100px;
+    background: transparent;
+    border: 1.5px solid white;
+    color: white;
+    font-size: 1em;
+    padding: 10px;
+    margin: 5px 0 20px;
 }
 
-.getstartedform {
-    color: #f5f9e9;
-    background-color: #b7324b;
-    padding: 15px;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-size: 15px;
-    margin: 10px 0 0 0;
-}
-
-.getstartedform:hover {
-    color: black;
-    background-color: #f5f9e9;
-}
-
-.getstartedform a {
-    color: #f5f9e9;
-    text-decoration: none;
-}
-
-.getstartedform a:hover {
+.addTaskForm button {
+    width: 100%;
+    height: 40px;
+    background: white;
+    border: 1.5px solid white;
     color: #b7324b;
+    font-size: 1em;
+    margin: 5px 0 20px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.redirection {
-    margin: 10px 0 0 0;
+.addTaskForm button:hover {
+    background-color: #b7324b;
+    color: white;
+}
+
+.allTasks h2 {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.task {
+    background: #891133;
+    border: 1.5px solid #fff;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.task h3 {
+    color: #fff;
+}
+
+.task p {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.task button {
+    width: 100%;
+    height: 40px;
+    background: white;
+    border: 1.5px solid white;
+    color: #b7324b;
+    font-size: 1em;
+    margin: 5px 0 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.task button:hover {
+    background-color: #b7324b;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .list img {
+        width: 100%;
+        height: auto;
+    }
+
+    .login_register {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        padding: 20px;
+        top: 100px;
+    }
 }

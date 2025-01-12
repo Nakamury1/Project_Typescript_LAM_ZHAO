@@ -26,59 +26,83 @@
             </ul>
         </nav>
 
-        <section class="CoIns">
-            <div class="formulaire">
-                <div class="form_block">
-                    <h2>CONNEXION</h2>
-                    <form action="" method="POST" class="form">
-                        <div class="bloc">
-                            <label for="nom"></label>
-                            <input type="text" id="nom" name="nom" placeholder="Nom">
-                        </div>
-                        <div class="bloc">
-                            <label for="prenom"></label>
-                            <input type="text" id="prenom" name="prenom" placeholder="Prénom">
-                        </div>
-                        <div class="bloc">
-                            <label for="email"></label>
-                            <input type="mail" id="email" name="email" placeholder="Adresse mail">
-                        </div>
-                        <div class="bloc">
-                            <label for="mdp"></label>
-                            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
-                        </div>
-                        <button type="submit" name="submit" onclick="logIn()" class="getstartedform">Se connecter</button>
-                    </form>
-                </div>
+        <!-- REGISTER FORM -->
+        <section class="login_register">
+            <div class="formBox login">
+                <h2>Login</h2>
+                <form action="#" class="loginForm">
+                    <div class="inputBox">
+                        <span class="icon"><i class="ri-mail-fill"></i></span>
+                        <input type="text" name="userEmail" id="userEmail" required>
+                        <label for="userEmail">Email</label>
+                    </div>
+                    <div class="inputBox">
+                        <span class="icon"><i class="ri-lock-2-fill"></i></span>
+                        <input type="password" name="userPassword" id="userPassword" required>
+                        <label for="userPassword">Password</label>
+                    </div>
+                    <div class="rememberForgot">
+                        <label for="remember"><input type="checkbox" id="remember">Remember me</label>
+                        <a href="#">Forgot Password ?</a>
+                    </div>
+                    <button type="submit" class="submit">Login</button>
+                    <div class="loginRegister">
+                        <p>Don't have an account ? <a href="#" class="registerLink">Register</a></p> 
+                    </div>
+                </form>
             </div>
-        
-            <div class="formulaire">
-                <div class="form_block">
-                    <h2>INSCRIPTION</h2>
-                    <form action="" method="POST" class="form">
-                        <div class="bloc">
-                            <label for="nom"></label>
-                            <input type="text" id="nom" name="nom" placeholder="Nom">
-                        </div>
-                        <div class="bloc">
-                            <label for="prenom"></label>
-                            <input type="text" id="prenom" name="prenom" placeholder="Prénom">
-                        </div>
-                        <div class="bloc">
-                            <label for="email"></label>
-                            <input type="mail" id="email" name="email" placeholder="Adresse mail">
-                        </div>
-                        <div class="bloc">
-                            <label for="mdp"></label>
-                            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
-                        </div>
-                        <button type="submit" name="submit" onclick="signIn()" class="getstartedform">S'inscrire</button>
-                    </form>
-                </div>
+
+            <div class="formBox registration">
+                <h2>Registration</h2>
+                <form action="#" class="registrationForm">
+                    <div class="inputBox">
+                        <span class="icon"><i class="ri-user-fill"></i></span>
+                        <input type="text" name="firstname" id="firstname" required>
+                        <label for="firstname">FirstName</label>
+                    </div>
+                    <div class="inputBox">
+                        <span class="icon"><i class="ri-user-fill"></i></span>
+                        <input type="text" name="lastname" id="lastname" required>
+                        <label for="lastname">LastName</label>
+                    </div>
+                    <div class="inputBox">
+                        <span class="icon"><i class="ri-mail-fill"></i></span>
+                        <input type="text" name="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="inputBox">
+                        <span class="icon"><i class="ri-lock-2-fill"></i></span>
+                        <input type="password" name="password" id="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="rememberForgot">
+                        <label for="agree"><input type="checkbox" id="agree" required>I agree with the terms and conditions</label>
+                    </div>
+                    <button type="submit" class="submit">Register</button>
+                    <div class="loginRegister">
+                        <p>Already have an account ? <a href="#" class="loginLink">Login</a></p> 
+                    </div>
+                </form>
             </div>
         </section>
-    
+
         <script src="../js/controllers/UserController.js"></script>
         <script src="../js/signin.js"></script>
+
+        <script>
+            const loginLink = document.querySelector(".loginLink")
+            const registerLink = document.querySelector(".registerLink")
+            const register = document.querySelector(".login_register")
+
+            // Passer sur la registration page
+            registerLink.addEventListener("click", () => {
+                register.classList.add("active")
+            })
+
+            // Passer sur la login page (si l'utilisateur est sur la registration page)
+            loginLink.addEventListener("click", () => {
+                register.classList.remove("active")
+            })
+        </script>
     </body>
 </html>

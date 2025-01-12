@@ -25,18 +25,104 @@
                 <li><a href="Co_Ins.html">CONNEXION</a></li>
             </ul>
         </nav>
-        <h1>Ajouter une tâche</h1>
-        <form action="" method="POST" class="form">
-            <label for="titre">Titre</label>
-            <input type="text" id="titre" name="titre" placeholder="titre">
-            <br>
-            <label for="description">Description</label>
-            <textarea type="text" id="description" name="description" placeholder="description"></textarea>
-            <br>
-            <label for="deadline">Deadline</label>
-            <input type="datetime-local" id="deadline" name="deadline">
-            <br>
-            <button type="submit" name="submit" onclick="createTask()">Ajouter la tache</button>
-        </form>
+
+        <div class="addTask">
+            <h2>Ajouter une tâche</h2>
+
+            <form action="" method="POST" class="addTaskForm">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre">
+                <label for="description">Description</label>
+                <textarea type="text" id="description" name="description"></textarea>
+                <label for="deadline">Deadline</label>
+                <input type="datetime-local" id="deadline" name="deadline">
+                <button type="submit" name="submit" onclick="createTask()">Ajouter la tache</button>
+            </form>
+            <hr>
+        </div>
+
+        <div class="allTasks">
+            <h2>Mes tâches</h2>
+
+            <div class="tasks">
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+                <div class="task">
+                    <h3>Titre</h3>
+                    <p>Description</p>
+                    <p>Deadline</p>
+                    <button><i class="ri-edit-line"></i></button>
+                    <button><i class="ri-delete-bin-line"></i></button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
