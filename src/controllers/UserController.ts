@@ -1,14 +1,12 @@
-import * as bcrypt from "bcrypt-ts";
-import { PrismaClient } from "@prisma/client";
-import jwt from "jsonwebtoken";
-import * as dotenv from "dotenv";
-import { Request, Response } from 'express';
-
+import { Router, Request, Response } from 'express';
+import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import * as dotenv from 'dotenv';
 import { UserInterface } from "../interfaces/User";
 
 dotenv.config();
 const prisma = new PrismaClient();
-
 const jwtSecret = process.env.JWT_SECRET as string;
 
 export class UserController implements UserInterface {
@@ -16,10 +14,19 @@ export class UserController implements UserInterface {
     email: string;
     password: string;
 
-    constructor(id: number, email: string, password: string) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
+    constructor() {
+        this.id = 0;
+        this.email = '';
+        this.password = '';
+        this.router = Router();
+        this.initializeRoutes();
+    }
+
+    public router: Router;
+
+    private initializeRoutes() {
+        this.router.post('/signIn', this.signIn);
+        this.router.post('/login', this.logIn);
     }
 
     public signIn = async (req: Request, res: Response) => {
@@ -59,22 +66,16 @@ export class UserController implements UserInterface {
         const { email, password } = req.body;
         try {
             const user = await prisma.user.findUnique({
-                where: {
-                    email,
-                },
+                where: { email },
             });
 
             if (!user) {
-                return res.status(404).json({ error: "User not found" });
+                return res.status(401).json({ error: "Invalid email or password" });
             }
 
-            if (!jwtSecret) {
-                return res.status(500).json({ error: "Invalid token" });
-            }
-
-            const validPassword = await bcrypt.compare(password, user.password);
-            if (!validPassword) {
-                return res.status(401).json({ error: "Invalid password" });
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+            if (!isPasswordValid) {
+                return res.status(401).json({ error: "Invalid email or password" });
             }
 
             const token = jwt.sign(
@@ -88,7 +89,7 @@ export class UserController implements UserInterface {
                 }
             );
 
-            return res.status(200).json({ token });
+            return res.status(200).json({ user, token });
         } catch (error) {
             console.error("Login failed", error);
             return res.status(500).json({ error: "Login failed" });

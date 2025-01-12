@@ -1,9 +1,9 @@
 import express from 'express';
-import { UserController } from './controllers/UserController.js';
+import { UserController } from './controllers/UserController';
 import { TacheController } from './controllers/TacheController.js';
 
 const router = express.Router();
-const userController = new UserController(0, '', '');
+const userController = new UserController();
 const tacheController = new TacheController(0, '', '', new Date(), 'Non commencée', 0);
 
 router.post('/signIn', userController.signIn);
