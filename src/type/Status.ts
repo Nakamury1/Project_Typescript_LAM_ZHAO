@@ -1,1 +1,1 @@
-export type Status = "Nom commencée" | "En cours" | "Terminée";
+export type Status = "Non commencée" | "En cours" | "Terminée";
