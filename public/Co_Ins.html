@@ -30,7 +30,7 @@
         <section class="login_register">
             <div class="formBox login">
                 <h2>Login</h2>
-                <form action="#" class="loginForm">
+                <form action="#" method="POST" class="loginForm">
                     <div class="inputBox">
                         <span class="icon"><i class="ri-mail-fill"></i></span>
                         <input type="text" name="userEmail" id="userEmail" required>
@@ -45,7 +45,7 @@
                         <label for="remember"><input type="checkbox" id="remember">Remember me</label>
                         <a href="#">Forgot Password ?</a>
                     </div>
-                    <button type="submit" class="submit" onclick="signIn()">Login</button>
+                    <button type="submit" class="submit" onclick="logIn()">Login</button>
                     <div class="loginRegister">
                         <p>Don't have an account ? <a href="#" class="registerLink">Register</a></p> 
                     </div>
@@ -54,7 +54,7 @@
 
             <div class="formBox registration">
                 <h2>Registration</h2>
-                <form action="#" class="registrationForm">
+                <form action="/register" method="POST" class="registrationForm">
                     <div class="inputBox">
                         <span class="icon"><i class="ri-mail-fill"></i></span>
                         <input type="text" name="email" id="email" required>
@@ -68,7 +68,7 @@
                     <div class="rememberForgot">
                         <label for="agree"><input type="checkbox" id="agree" required>I agree with the terms and conditions</label>
                     </div>
-                    <button type="submit" class="submit" onclick="logIn()">Register</button>
+                    <button type="submit" class="submit" onclick="signIn()">Register</button>
                     <div class="loginRegister">
                         <p>Already have an account ? <a href="#" class="loginLink">Login</a></p> 
                     </div>
