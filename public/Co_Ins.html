@@ -30,13 +30,13 @@
         <section class="login_register">
             <div class="formBox login">
                 <h2>Login</h2>
-                <form action="/login" method="POST" class="loginForm">
-                    <div class="inputBox">
+                <form action="#" method="POST" class="loginForm">
+                    <div class="bloc inputBox">
                         <span class="icon"><i class="ri-mail-fill"></i></span>
-                        <input type="text" name="userEmail" id="userEmail" required>
+                        <input type="mail" name="userEmail" id="userEmail" required>
                         <label for="userEmail">Email</label>
                     </div>
-                    <div class="inputBox">
+                    <div class="bloc inputBox">
                         <span class="icon"><i class="ri-lock-2-fill"></i></span>
                         <input type="password" name="userPassword" id="userPassword" required>
                         <label for="userPassword">Password</label>
@@ -55,12 +55,12 @@
             <div class="formBox registration">
                 <h2>Registration</h2>
                 <form action="/signIn" method="POST" class="registrationForm">
-                    <div class="inputBox">
+                    <div class="bloc inputBox">
                         <span class="icon"><i class="ri-mail-fill"></i></span>
-                        <input type="text" name="email" id="email" required>
+                        <input type="mail" name="email" id="email" required>
                         <label for="email">Email</label>
                     </div>
-                    <div class="inputBox">
+                    <div class="bloc inputBox">
                         <span class="icon"><i class="ri-lock-2-fill"></i></span>
                         <input type="password" name="password" id="password" required>
                         <label for="password">Password</label>
@@ -68,7 +68,7 @@
                     <div class="rememberForgot">
                         <label for="agree"><input type="checkbox" id="agree" required>I agree with the terms and conditions</label>
                     </div>
-                    <button type="submit" class="submit" onclick="signIn()">Register</button>
+                    <button type="submit" class="submit">Register</button>
                     <div class="loginRegister">
                         <p>Already have an account ? <a href="#" class="loginLink">Login</a></p> 
                     </div>
