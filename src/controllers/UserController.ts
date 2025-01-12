@@ -3,25 +3,19 @@ import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import { UserInterface } from "../interfaces/User";
 
 dotenv.config();
 const prisma = new PrismaClient();
 const jwtSecret = process.env.JWT_SECRET as string;
 
-export class UserController implements UserInterface {
-    id: number;
-    email: string;
-    password: string;
+export class UserController {
+    public router: Router;
 
     constructor() {
-        this.id = 0;
-        this.email = '';
-        this.password = '';
         this.router = Router();
+        this.router.post('/signIn', this.signIn);
+        this.router.post('/login', this.logIn);
     }
-
-    public router: Router;
 
     public signIn = async (req: Request, res: Response) => {
         const { email, password } = req.body;
