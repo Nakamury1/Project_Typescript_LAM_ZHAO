@@ -1,43 +1,59 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-const getTaches = async (req, res) => {
-    try {
-        const taches = await prisma.tache.findMany();
-        res.json(taches);
+export class TacheController {
+    constructor(id, titre, description, deadline, etat_tache, user_Id) {
+        this.etat_tache = Status;
+        this.getTaches = async (user_Id) => {
+            try {
+                const taches = await prisma.tache.findMany({
+                    where: {
+                        user_Id
+                    },
+                });
+                return taches;
+            }
+            catch (error) {
+                console.error("Echec de la récupération de la liste des tâches", error);
+                throw new Error;
+            }
+        };
+        this.createTache = async (titre, description, deadline, etat_tache, user_Id) => {
+            try {
+                const createtache = await prisma.tache.create({
+                    data: {
+                        titre,
+                        description,
+                        deadline,
+                        etat_tache,
+                        user_Id
+                    },
+                });
+                return createtache;
+            }
+            catch (error) {
+                console.error("Echec d'une création d'une tâche", error);
+                throw new Error;
+            }
+        };
+        this.deleteTache = async (id, user_Id) => {
+            try {
+                const deletetache = await prisma.tache.delete({
+                    where: {
+                        id,
+                        user_Id
+                    },
+                });
+                return deletetache;
+            }
+            catch (error) {
+                console.log("Echec de la suppression de la tâche");
+            }
+        };
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.deadline = deadline;
+        this.etat_tache = etat_tache;
+        this.user_Id = user_Id;
     }
-    catch (error) {
-        res.json(error);
-    }
-};
-const createTache = async (req, res) => {
-    const tache = req.body;
-    try {
-        const createtache = await prisma.tache.create({
-            data: {
-                titre: tache.titre,
-                description: tache.description,
-                etat_tache: tache.etat_tache,
-                deadline: tache.deadline,
-            },
-        });
-        res.json(createtache);
-    }
-    catch (error) {
-        res.json(error);
-    }
-};
-const deleteTache = async (req, res) => {
-    const id = Number(req.params.id);
-    try {
-        const deletetache = await prisma.tache.delete({
-            where: {
-                id: id,
-            },
-        });
-        res.json(deletetache);
-    }
-    catch (error) {
-        res.json(error);
-    }
-};
-export { getTaches, createTache, deleteTache, };
+}
