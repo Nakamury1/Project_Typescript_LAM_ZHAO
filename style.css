@@ -98,21 +98,26 @@ h2{
 
 /*------------- Formulaire Connexion et Inscription -------------*/
 
+.CoIns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .formulaire{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 95px 0;
+    padding: 95px 30px;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .form_block{
     background-color: #f5f9e9;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     color: black;
     padding: 30px;
 }
