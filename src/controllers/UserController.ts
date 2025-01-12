@@ -19,15 +19,9 @@ export class UserController implements UserInterface {
         this.email = '';
         this.password = '';
         this.router = Router();
-        this.initializeRoutes();
     }
 
     public router: Router;
-
-    private initializeRoutes() {
-        this.router.post('/signIn', this.signIn);
-        this.router.post('/login', this.logIn);
-    }
 
     public signIn = async (req: Request, res: Response) => {
         const { email, password } = req.body;

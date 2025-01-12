@@ -64,10 +64,5 @@ export class UserController {
         this.email = '';
         this.password = '';
         this.router = Router();
-        this.initializeRoutes();
-    }
-    initializeRoutes() {
-        this.router.post('/signIn', this.signIn);
-        this.router.post('/login', this.logIn);
     }
 }
