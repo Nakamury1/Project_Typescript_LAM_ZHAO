@@ -327,6 +327,7 @@ ul li a:hover {
     display: flex;
     justify-content: center;
     padding: 50px;
+    color: #891133;
 }
 
 .tasks {

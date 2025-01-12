@@ -23,20 +23,21 @@
             <ul>
                 <li><a href="Accueil.html">ACCUEIL</a></li>
                 <li><a href="Co_Ins.html">CONNEXION</a></li>
+                <li><a href="Add_tache.html">TODOLIST</a></li>
             </ul>
         </nav>
 
         <div class="addTask">
             <h2>Ajouter une tâche</h2>
 
-            <form action="" method="POST" class="addTaskForm">
+            <form method="POST" class="addTaskForm">
                 <label for="titre">Titre</label>
                 <input type="text" id="titre" name="titre">
                 <label for="description">Description</label>
                 <textarea type="text" id="description" name="description"></textarea>
                 <label for="deadline">Deadline</label>
                 <input type="datetime-local" id="deadline" name="deadline">
-                <button type="submit" name="submit" onclick="createTache()">Ajouter la tache</button>
+                <button type="submit" name="submit">Ajouter la tache</button>
             </form>
             <hr>
         </div>
@@ -52,77 +53,10 @@
                     <button><i class="ri-edit-line"></i></button>
                     <button><i class="ri-delete-bin-line"></i></button>
                 </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
-                <div class="task">
-                    <h3>Titre</h3>
-                    <p>Description</p>
-                    <p>Deadline</p>
-                    <button><i class="ri-edit-line"></i></button>
-                    <button><i class="ri-delete-bin-line"></i></button>
-                </div>
             </div>
         </div>
+
+        <script src="js/controllers/TacheController.js"></script>
+
     </body>
 </html>
