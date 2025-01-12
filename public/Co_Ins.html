@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- TITLE -->
+        <title>Connexion | Inscription</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+        <!-- ICONS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="Accueil.html">ACCUEIL</a></li>
+                <li><a href="Co_Ins.html">CONNEXION</a></li>
+            </ul>
+        </nav>
+
+        <section class="CoIns">
+            <div class="formulaire">
+                <div class="form_block">
+                    <h2>CONNEXION</h2>
+                    <form action="" method="POST" class="form">
+                        <div class="bloc">
+                            <label for="nom"></label>
+                            <input type="text" id="nom" name="nom" placeholder="Nom">
+                        </div>
+                        <div class="bloc">
+                            <label for="prenom"></label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+                        </div>
+                        <div class="bloc">
+                            <label for="email"></label>
+                            <input type="mail" id="email" name="email" placeholder="Adresse mail">
+                        </div>
+                        <div class="bloc">
+                            <label for="mdp"></label>
+                            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
+                        </div>
+                        <button type="submit" name="submit" onclick="logIn()" class="getstartedform">Se connecter</button>
+                    </form>
+                </div>
+            </div>
+        
+            <div class="formulaire">
+                <div class="form_block">
+                    <h2>INSCRIPTION</h2>
+                    <form action="" method="POST" class="form">
+                        <div class="bloc">
+                            <label for="nom"></label>
+                            <input type="text" id="nom" name="nom" placeholder="Nom">
+                        </div>
+                        <div class="bloc">
+                            <label for="prenom"></label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+                        </div>
+                        <div class="bloc">
+                            <label for="email"></label>
+                            <input type="mail" id="email" name="email" placeholder="Adresse mail">
+                        </div>
+                        <div class="bloc">
+                            <label for="mdp"></label>
+                            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
+                        </div>
+                        <button type="submit" name="submit" onclick="signIn()" class="getstartedform">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    
+        <script src="../js/controllers/UserController.js"></script>
+        <script src="../js/signin.js"></script>
+    </body>
+</html>

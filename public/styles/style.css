@@ -1,111 +1,114 @@
 /*-------- Ensemble de la page --------*/
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	list-style: none;
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
-    background: linear-gradient(#b7324b,#a0213f,#891133);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(#b7324b, #a0213f, #891133);
     color: #f5f9e9;
+    height: 100vh;
 }
 
-h1{
+h1 {
     font-size: 70px;
 }
 
-h2{
+h2 {
     font-size: 40px;
     color: #891133;
 }
 
 /*----------------  Barre de navigation ---------------*/
 
-.navigation{
-	display: flex;
+nav {
+    position: absolute;
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
     justify-content: center;
-	align-items: center;
-	padding: 30px;
-    background-color: black;
-    opacity: 0.6;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.navigation a{
-	color: white;
-    text-decoration: none;
+ul {
+    display: flex;
+    align-items: center;
 }
 
-.menu{
-	display: flex;
-	align-items: center;
+ul li {
+    padding: 5px 10px;
+    font-size: 20px;
+    margin: 0 2px;
 }
 
-.menu li{
-	padding: 5px 10px;
-	font-size: 20px;
-	margin: 0 2px;
+ul li a {
+    color: white;
+}
+
+ul li a:hover {
+    color: #b7324b;
 }
 
 /*-------------------- Page d'accueil -------------------*/
 
-.accueil{
+.accueil {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 120px 0;
+    height: 100vh;
 }
 
-.text{
+.text {
     width: 50%;
 }
 
-.text p{
+.text p {
     font-size: 20px;
     padding: 20px 0;
 }
 
-.list img{
+.getstarted {
+    background-color: transparent;
+    padding: 15px;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.getstarted a {
+    color: black;
+}
+
+.getstarted:hover {
+    background-color: #f5f9e9;
+    color: #b7324b;
+}
+
+.getstarted:hover a {
+    color: inherit;
+}
+
+.list img {
     width: 400px;
     height: 400px;
 }
 
-.getstarted{
-    color: #f5f9e9;
-    background-color: #b7324b;
-    padding: 15px;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-size: 15px;
-}
-
-.getstarted:hover{
-    color: black;
-    background-color: #f5f9e9;
-}
-
-.getstarted a{
-    color: #f5f9e9;
-    text-decoration: none;
-}
-
-.getstarted a:hover{
-    color: #b7324b;
-}
-
 /*------------- Formulaire Connexion et Inscription -------------*/
 
-.CoIns{
+.CoIns {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.formulaire{
+.formulaire {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,18 +118,18 @@ h2{
     text-align: center;
 }
 
-.form_block{
+.form_block {
     background-color: #f5f9e9;
     border-radius: 10px;
     color: black;
     padding: 30px;
 }
 
-.form{
+.form {
     padding: 20px 0;
 }
 
-.bloc{
+.bloc {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -139,22 +142,22 @@ label {
     text-align: left;
 }
 
-input{
+input {
     padding: 5px;
-	margin: 15px;
-	border: none;
-	border-bottom: 3px solid black;
-	align-items: center;
-	font-size: 15px;
-	background: transparent;
+    margin: 15px;
+    border: none;
+    border-bottom: 3px solid black;
+    align-items: center;
+    font-size: 15px;
+    background: transparent;
 }
 
-input::placeholder{
-	font-size: 15px;
+input::placeholder {
+    font-size: 15px;
     color: black;
 }
 
-.getstartedform{
+.getstartedform {
     color: #f5f9e9;
     background-color: #b7324b;
     padding: 15px;
@@ -164,22 +167,20 @@ input::placeholder{
     margin: 10px 0 0 0;
 }
 
-.getstartedform:hover{
+.getstartedform:hover {
     color: black;
     background-color: #f5f9e9;
 }
 
-.getstartedform a{
+.getstartedform a {
     color: #f5f9e9;
     text-decoration: none;
 }
 
-.getstartedform a:hover{
+.getstartedform a:hover {
     color: #b7324b;
 }
 
-
-.redirection{
+.redirection {
     margin: 10px 0 0 0;
 }
-

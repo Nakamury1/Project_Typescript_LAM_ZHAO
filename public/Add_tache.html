@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- TITLE -->
+        <title>Ajout de tache</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+        <!-- ICONS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="Accueil.html">ACCUEIL</a></li>
+                <li><a href="Co_Ins.html">CONNEXION</a></li>
+            </ul>
+        </nav>
+        <h1>Ajouter une tâche</h1>
+        <form action="" method="POST" class="form">
+            <label for="titre">Titre</label>
+            <input type="text" id="titre" name="titre" placeholder="titre">
+            <br>
+            <label for="description">Description</label>
+            <textarea type="text" id="description" name="description" placeholder="description"></textarea>
+            <br>
+            <label for="deadline">Deadline</label>
+            <input type="datetime-local" id="deadline" name="deadline">
+            <br>
+            <button type="submit" name="submit" onclick="createTask()">Ajouter la tache</button>
+        </form>
+    </body>
+</html>
