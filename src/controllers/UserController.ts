@@ -20,7 +20,7 @@ const signIn = async (req: Request, res: Response) => {
         });
 
         if (!process.env.JWT_SECRET) {
-          return res.status(500).json({ error: 'Clé secrète JWT non définie' });
+          return res.status(500).json({ error: 'Clé JWT non définie' });
         }
 
         const token = jwt.sign(
@@ -54,16 +54,16 @@ const logIn = async (req: Request, res: Response) => {
         });
 
         if (!user) {
-            return res.status(404).json({ error: 'User  not found' });
+            return res.status(404).json({ error: 'Utilisateur introuvable' });
         }
 
         if (!process.env.JWT_SECRET) {
-          return res.status(500).json({ error: 'Clé secrète JWT non définie' });
+          return res.status(500).json({ error: 'Clé JWT non définie' });
         }
 
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
-            return res.status(401).json({ error: 'Invalid password' });
+            return res.status(401).json({ error: 'Mot de passe invalide' });
         }
 
         const token = jwt.sign(
