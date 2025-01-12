@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Connexion</title>
+</head>
+<body>
+    <nav class="navigation">
+        <ul class="menu">
+            <li><a href="Accueil.html">ACCUEIL</a></li>
+            <li><a href="Connexion.html">CONNEXION</a></li>
+            <li><a href="Inscription.html">INSCRIPTION</a></li>
+        </ul>
+    </nav>
+
+    <section class="formulaire">
+        <div class="form_block">
+            <h2>CONNEXION</h2>
+            <form action="" method="POST" class="form">
+                <div class="bloc">
+                    <label for="nom"></label>
+                    <input type="text" id="nom" name="nom" placeholder="Nom">
+                </div>
+                <div class="bloc">
+                    <label for="prenom"></label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+                </div>
+                <div class="bloc">
+                    <label for="email"></label>
+                    <input type="mail" id="email" name="email" placeholder="Adresse mail">
+                </div>
+                <div class="bloc">
+                    <label for="mdp"></label>
+                    <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
+                </div>
+                <button type="submit" name="submit" onclick=lala() class="getstartedform">Se connecter</button>
+            </form>
+            <p class="redirection">Pas de compte ? Inscrivez-vous <a href="Inscription.html">ici</a> !</p>
+        </div>
+    </section>
+
+    <script src="./js/login.js"></script>
+</body>
+</html>

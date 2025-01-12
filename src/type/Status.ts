@@ -1,0 +1,1 @@
+export type Status = "Nom commencée" | "En cours" | "Terminée";
