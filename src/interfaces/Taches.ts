@@ -5,4 +5,5 @@ export interface TachesInterface{
     titre: string;
     etat_tache: Status;
     deadline: Date;
+    user_Id: number;
 }

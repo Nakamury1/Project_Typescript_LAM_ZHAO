@@ -15,10 +15,9 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  nom       String
-  prenom    String
-  email     String  @unique
+  email     String   @unique
   password  String
+  taches    Tache[]
   createAt  DateTime @default(now())
   updateAt  DateTime @updatedAt
 } 
@@ -29,6 +28,8 @@ model Tache {
   description String
   etat_tache  String
   deadline    DateTime
+  user        User?   @relation(fields:[user_Id], references: [id])
+  user_Id     Int?
   createAt    DateTime @default(now())
   updateAt    DateTime @updatedAt
 }
