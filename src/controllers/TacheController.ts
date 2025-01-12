@@ -64,6 +64,24 @@ export class TacheController implements TachesInterface {
         }
     };
 
+    public validateTache = async (req: Request, res: Response) => {
+        const { id, etat_tache } = req.body;
+        try {
+            const tache = await prisma.tache.update({
+                where: {
+                    id,
+                },
+                data: {
+                    etat_tache: Status.TERMINEE,
+                },
+            });
+            return res.status(200).json(tache);
+        } catch (error) {
+            console.log("Echec de la validation de la tâche");
+            return res.status(500).json({ error: "Validate tache failed" });
+        }
+    };
+
     public deleteTache = async (req: Request, res: Response) => {
         const { id } = req.body;
         try {

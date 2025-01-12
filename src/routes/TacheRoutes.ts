@@ -6,6 +6,7 @@ const tacheController = new TacheController(0, '', '', new Date(), 'Non commenc√
 
 router.get('/', tacheController.getTaches);
 router.post('/:id', tacheController.createTache);
+router.update('/', tacheController.validateTache);
 router.delete('/', tacheController.deleteTache);
 
 export default router;
