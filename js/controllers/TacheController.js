@@ -36,6 +36,24 @@ export class TacheController {
                 return res.status(500).json({ error: "Create tache failed" });
             }
         };
+        this.validateTache = async (req, res) => {
+            const { id, etat_tache } = req.body;
+            try {
+                const tache = await prisma.tache.update({
+                    where: {
+                        id,
+                    },
+                    data: {
+                        etat_tache: Status.TERMINEE,
+                    },
+                });
+                return res.status(200).json(tache);
+            }
+            catch (error) {
+                console.log("Echec de la validation de la tâche");
+                return res.status(500).json({ error: "Validate tache failed" });
+            }
+        };
         this.deleteTache = async (req, res) => {
             const { id } = req.body;
             try {

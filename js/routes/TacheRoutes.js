@@ -4,5 +4,6 @@ const router = express.Router();
 const tacheController = new TacheController(0, '', '', new Date(), 'Non commencée', 0);
 router.get('/', tacheController.getTaches);
 router.post('/:id', tacheController.createTache);
+router.update('/', tacheController.validateTache);
 router.delete('/', tacheController.deleteTache);
 export default router;
