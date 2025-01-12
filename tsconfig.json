@@ -5,9 +5,16 @@
       "noEmitOnError": false,
       "strict": true,
       "moduleResolution": "node",
-      "allowSyntheticDefaultImports": true
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true, 
+      "skipLibCheck": true,
+      "module": "ESNext",
     },
     "include": [
       "src/**/*.ts"
+, "src/router.ts"    ],
+    "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
     ]
   }

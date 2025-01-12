@@ -1,5 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteTache = exports.createTache = exports.getTaches = void 0;
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
 const getTaches = async (req, res) => {
     try {
         const taches = await prisma.tache.findMany();
@@ -9,6 +12,7 @@ const getTaches = async (req, res) => {
         res.json(error);
     }
 };
+exports.getTaches = getTaches;
 const createTache = async (req, res) => {
     const tache = req.body;
     try {
@@ -26,6 +30,7 @@ const createTache = async (req, res) => {
         res.json(error);
     }
 };
+exports.createTache = createTache;
 const deleteTache = async (req, res) => {
     const id = Number(req.params.id);
     try {
@@ -40,4 +45,4 @@ const deleteTache = async (req, res) => {
         res.json(error);
     }
 };
-export { getTaches, createTache, deleteTache, };
+exports.deleteTache = deleteTache;
