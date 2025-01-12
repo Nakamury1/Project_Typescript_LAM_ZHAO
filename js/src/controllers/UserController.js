@@ -25,10 +25,10 @@ const signIn = async (req, res) => {
         }, process.env.JWT_SECRET, {
             expiresIn: '8000h',
         });
-        res.json({ token });
+        return res.json({ token });
     }
     catch (error) {
-        res.status(400).json(error);
+        return res.status(400).json(error);
     }
 };
 const logIn = async (req, res) => {
@@ -57,10 +57,10 @@ const logIn = async (req, res) => {
         }, process.env.JWT_SECRET, {
             expiresIn: '8000h',
         });
-        res.json({ token });
+        return res.json({ token });
     }
     catch (error) {
-        res.json(error);
+        return res.json(error);
     }
 };
 export { signIn, logIn };

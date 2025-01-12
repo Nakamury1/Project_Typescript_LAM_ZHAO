@@ -3,7 +3,7 @@ import { Request, Response } from "express"
 
 const prisma = new PrismaClient()
 
-const getTaches = async (req: Request, res: Response) => {
+const getTaches = async (req: Request, res: Response) =>{
     try {
         const taches = await prisma.tache.findMany();
         res.json(taches);

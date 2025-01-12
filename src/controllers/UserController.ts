@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 
 const prisma = new PrismaClient();
 
-const signIn = async (req: Request, res: Response) => {
+const signIn = async (req: Request, res: Response) : Promise<Response> => {
     const { nom, prenom, email, password } = req.body;
 
     try {
@@ -37,13 +37,13 @@ const signIn = async (req: Request, res: Response) => {
             }
         );
 
-        res.json({ token });
+        return res.json({ token });
     } catch (error) {
-        res.status(400).json(error);
+        return res.status(400).json(error);
     }
 };
 
-const logIn = async (req: Request, res: Response) => {
+const logIn = async (req: Request, res: Response) : Promise<Response> => {
     const { nom, prenom, email, password } = req.body;
 
     try {
@@ -79,10 +79,10 @@ const logIn = async (req: Request, res: Response) => {
             }
         );
 
-        res.json({ token });
+        return res.json({ token });
     }
     catch (error) {
-      res.json(error);
+      return res.json(error);
     }
 };
 

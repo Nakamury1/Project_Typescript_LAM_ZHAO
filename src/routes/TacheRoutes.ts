@@ -4,7 +4,7 @@ import { getTaches, createTache, deleteTache } from '../controllers/TacheControl
 const router = express.Router()
 
 router.get('/', getTaches)
-router.post('/', createTache)
-router.delete('/:id', deleteTache)  
+router.post('/:id', createTache)
+router.delete('/', deleteTache)  
 
 export default router
